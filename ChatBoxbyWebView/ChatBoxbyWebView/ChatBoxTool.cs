@@ -137,7 +137,7 @@ namespace ChatBoxbyWebView
         .imgtest img{width:100%;
         min-height:100%; text-align:center;}
 	    </style>
-        </head><body>";
+        </head><body></body></html>";
 
         //接收消息html
         //点击昵称、头像时  js与C#代码进行通信  window.external.notify(...)
@@ -185,7 +185,7 @@ namespace ChatBoxbyWebView
             //C# 与 js通信
             string js = "";  
             js += "var div = document.createElement('div');";  //创建div
-            js += "div.innerHTML=\"" + html_2_insert.Replace("\"","\\\"").Replace("\r\n","") + "\";"; //插入html
+            js += "div.innerHTML='" + html_2_insert.Replace("\"","\\\"").Replace("'", "\\'").Replace("\r\n","") + "';"; //插入html
             js += "document.body.appendChild(div);";  //将div添加到body中
             js += "location.href='#ok';";  //webview定位到最新一条消息
             js += "document.getElementById('ok').remove();"; //将锚点移除
